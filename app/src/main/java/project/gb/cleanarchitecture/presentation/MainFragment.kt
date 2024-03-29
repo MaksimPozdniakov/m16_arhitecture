@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
 
-    private lateinit var adapter: UsefulActivityAdapter
+    private val adapter: UsefulActivityAdapter by lazy { UsefulActivityAdapter() }
 
     private val viewModel: MainViewModel by viewModels {viewModelFactory}
 
@@ -39,7 +39,6 @@ class MainFragment : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(inflater)
 
-        adapter = UsefulActivityAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
